@@ -26,8 +26,9 @@
     <javac srcdir="${src.dir}"
            destdir="${classes.dir}"
            includeAntRuntime="false"
-           deprecation="on">
-      <compilerarg value="-Werror" />
+           deprecation="on"
+           source="1.7"
+           target="1.7">
       <classpath refid="classpath.path" />
     </javac>
   </target>
@@ -37,6 +38,9 @@
           description="packages the class files as a jar">
     <jar destfile="${project-jarfile}" update="true">
       <fileset dir="${classes.dir}" />
+    </jar>
+    <jar destfile="${build.dir}/${ant.project.name}-sources.jar" update="true">
+      <fileset dir="${src.dir}" />
     </jar>
   </target>
 
